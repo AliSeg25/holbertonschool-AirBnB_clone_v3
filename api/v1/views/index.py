@@ -25,8 +25,8 @@ def get_status():
 @app_views.route("/api/v1/stats", methods=["GET"])
 def number_objects():
     """Permet de recupere tout les class dans un dict et le nombre instance"""
-    classes = [Amenity, City, Place, Review, State, User]
     names = ["amenities", "cities", "places", "reviews", "states", "users"]
+    classes = [Amenity, City, Place, Review, State, User]
 
     objs = {}
     for i in range(len(classes)):
