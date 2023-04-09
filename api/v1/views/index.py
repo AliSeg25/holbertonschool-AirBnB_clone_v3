@@ -5,8 +5,8 @@ app
 
 from flask import jsonify
 import sys
-sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
 from api.v1.views import app_views
+sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
 
 
 @app_views.route("/status", methods=["GET"])
