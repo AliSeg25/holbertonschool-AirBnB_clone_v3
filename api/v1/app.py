@@ -2,14 +2,13 @@
 """
 app
 """
-
-from flask import Flask
 import sys
+sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
+from flask import Flask
 from models import storage
 from api.v1.views import app_views
 import os
 from flask import jsonify, make_response
-sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
 
 
 app = Flask(__name__)
