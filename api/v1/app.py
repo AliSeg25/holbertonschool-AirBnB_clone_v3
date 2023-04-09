@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 from flask import Flask
+import sys
+sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
 from models import storage
 from api.v1.views import app_views
 import os
