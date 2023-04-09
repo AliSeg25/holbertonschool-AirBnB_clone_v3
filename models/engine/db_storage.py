@@ -84,6 +84,7 @@ class DBStorage:
                 return value
         return None
 
+
     def count(self, cls=None):
         """Compte le nombre d'objets dans le stockage correspondant
         à la classe donnée."""

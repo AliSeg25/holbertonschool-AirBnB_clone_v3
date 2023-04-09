@@ -77,7 +77,8 @@ class FileStorage:
             if key == "{}.{}".format(cls.__name__, id):
                 return value
         return None
-    
+
+
     def count(self, cls=None):
         """Compte le nombre d'objets dans le stockage correspondant
         à la classe donnée."""
