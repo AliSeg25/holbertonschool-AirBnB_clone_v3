@@ -2,10 +2,12 @@
 """
 states.py
 """
+import sys
+sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
+sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
 from flask import Flask, jsonify, request, make_response
 from models import storage
 from api.v1.views import app_views
-import sys
 from flask import abort
 from models.amenity import Amenity
 from models.city import City
@@ -13,8 +15,6 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
-sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
-sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
 
 
 @app_views.route('/states/', methods=['GET'], strict_slashes=False)
