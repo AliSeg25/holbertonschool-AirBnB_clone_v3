@@ -22,7 +22,7 @@ def get_status():
     return jsonify({"status": "OK"})
 
 
-@app_views.route("/api/v1/stats", methods=["GET"])
+@app_views.route("stats", methods=["GET"])
 def number_objects():
     """Permet de recupere tout les class dans un dict et le nombre instance"""
     names = ["amenities", "cities", "places", "reviews", "states", "users"]
