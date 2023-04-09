@@ -21,11 +21,14 @@ from models.user import User
 def get_status():
     return jsonify({"status": "OK"})
 
+@app_views.route('/stats', methods=['GET'], strict_slashes=False)
+def number_objects():
+    """ Retrieves the number of each objects by type """
+    classes = [Amenity, City, Place, Review, State, User]
+    names = ["amenities", "cities", "places", "reviews", "states", "users"]
 
-@app_views.route("/api/v1/stats", methods=["GET"])
-def get_stats():
-    """Permet de recupere tout les class dans un dict et le nombre instance"""
-    stats = {}
-    for cls in storage.classes().values():
-        stats[cls.__name__.lower() + "s"] = storage.count(cls)
-    return jsonify(stats)
+    num_objs = {}
+    for i in range(len(classes)):
+        num_objs[names[i]] = storage.count(classes[i])
+
+    return jsonify(num_objs)
