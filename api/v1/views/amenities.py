@@ -44,7 +44,7 @@ def get_amenity(amenity_id):
                  strict_slashes=False)
 def delete_amenity(amenity_id):
     """
-    Suprimer un amenity avec un if
+    Suprimer un amenity avec un id
     """
 
     amenity = storage.get(Amenity, amenity_id)
