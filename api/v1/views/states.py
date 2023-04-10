@@ -72,7 +72,7 @@ def post_state():
 def put_state(state_id):
     """
     récupérer un objet d'état spécifique
-    à partir de son ID
+    à partir de son ID et lui changer valeur
     """
     state = storage.get(State, state_id)
 
