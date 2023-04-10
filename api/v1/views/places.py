@@ -21,16 +21,14 @@ sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
                  strict_slashes=False)
 def get_places(city_id):
     """
-    Return all users
+    Retrieves the list of all Place objects of a City
     """
     city = storage.get(City, city_id)
 
     if not city:
         abort(404)
 
-    places = []
-    for place in city.places:
-        places.append(place.to_dict())
+    places = [place.to_dict() for place in city.places]
 
     return jsonify(places)
 
