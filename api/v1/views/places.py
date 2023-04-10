@@ -68,28 +68,33 @@ def delete_place(place_id):
 @app_views.route('/cities/<city_id>/places', methods=['POST'],
                  strict_slashes=False)
 def post_place(city_id):
-    city = storage.get("City", city_id)
-    if city is None:
-        return jsonify({"error": "City not found"}), 404
+    """
+    Creates a Place
+    """
+    city = storage.get(City, city_id)
 
-    content = request.get_json()
-    if content is None:
-        return jsonify({"error": "Not a JSON"}), 400
+    if not city:
+        abort(404)
 
-    if "user_id" not in content.keys():
-        return jsonify({"error": "Missing user_id"}), 400
+    if not request.get_json():
+        abort(400, description="Not a JSON")
 
-    user = storage.get("User", content["user_id"])
-    if user is None:
-        return jsonify({"error": "User not found"}), 404
+    if 'user_id' not in request.get_json():
+        abort(400, description="Missing user_id")
 
-    if "name" not in content.keys():
-        return jsonify({"error": "Missing name"}), 400
+    data = request.get_json()
+    user = storage.get(User, data['user_id'])
 
-    place = Place(name=content["name"], city_id=city_id, user_id=content["user_id"])
-    storage.new(place)
-    storage.save()
-    return jsonify(place.to_dict()), 201
+    if not user:
+        abort(404)
+
+    if 'name' not in request.get_json():
+        abort(400, description="Missing name")
+
+    data["city_id"] = city_id
+    instance = Place(**data)
+    instance.save()
+    return make_response(jsonify(instance.to_dict()), 201)
 
 
 @app_views.route('/places/<place_id>', methods=['PUT'], strict_slashes=False)
