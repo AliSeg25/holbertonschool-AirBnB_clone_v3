@@ -11,6 +11,7 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+import models
 
 classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
@@ -69,13 +70,26 @@ class FileStorage:
         """call reload() method for deserializing the JSON file to objects"""
         self.reload()
 
-
+    """
     def get(self, cls, id):
-        """Récupérer un objet en fonction de la classe et de son ID"""
         objects = self.all(cls)
         for key, value in objects.items():
             if key == "{}.{}".format(cls.__name__, id):
                 return value
+        return None
+    """
+
+    def get(self, cls, id):
+        """Récupérer un objet en fonction
+        de la classe et de son ID"""
+        if cls not in classes.values():
+            return None
+
+        all_cls = models.storage.all(cls)
+        for value in all_cls.values():
+            if (value.id == id):
+                return value
+
         return None
 
 
