@@ -28,7 +28,6 @@ def get_reviews(place_id):
     if not place:
         abort(404)
 
-
     reviews = []
     for review in place.reviews:
         reviews.append(review.to_dict())
