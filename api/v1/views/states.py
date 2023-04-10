@@ -54,11 +54,10 @@ def post_state():
     """
     Creates a State
     """
-    if 'name' not in request.get_json():
-        abort(400, description="Missing name")
-
     if not request.get_json():
-        abort(400, description="Not a JSON")
+        abort(400, {'error': 'Not a JSON'})
+    if 'name' not in request.get_json():
+        abort(400, {'error': 'Missing name'})
 
     data = request.get_json()
     # ** permet de faire passer args
