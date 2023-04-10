@@ -3,8 +3,6 @@
 states.py
 """
 import sys
-sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
-sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
 from flask import Flask, jsonify, request, make_response
 from models import storage
 from api.v1.views import app_views
@@ -15,7 +13,8 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
-
+sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
+sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
 
 
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
@@ -39,7 +38,8 @@ def get_state(state_id):
     return jsonify(state.to_dict())
 
 
-@app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=['DELETE'],
+                 strict_slashes=False)
 def delete_state(state_id):
     """Deletes a State object"""
     states = storage.all("State").values()
@@ -49,6 +49,7 @@ def delete_state(state_id):
             storage.save()
             return make_response(jsonify({}), 200)
     abort(404)
+
 
 @app_views.route('/states/', methods=['POST'], strict_slashes=False)
 def post_state():
@@ -70,7 +71,8 @@ def post_state():
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def put_state(state_id):
     """
-    récupérer un objet d'état spécifique à partir de son ID 
+    récupérer un objet d'état spécifique
+    à partir de son ID
     """
     state = storage.get(State, state_id)
 
