@@ -70,7 +70,6 @@ class FileStorage:
         """call reload() method for deserializing the JSON file to objects"""
         self.reload()
 
-
     def get(self, cls, id):
         """Récupérer un objet en fonction
         de la classe et de son ID"""
@@ -83,7 +82,6 @@ class FileStorage:
                 return value
 
         return None
-
 
     def count(self, cls=None):
         """Compte le nombre d'objets dans le stockage correspondant
