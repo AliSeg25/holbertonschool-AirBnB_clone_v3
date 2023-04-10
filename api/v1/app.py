@@ -3,15 +3,24 @@
 app
 """
 import sys
-sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
 from flask import Flask
 from models import storage
 from api.v1.views import app_views
 import os
 from flask import jsonify, make_response
+from flask_cors import CORS
+sys.path.append("/home/ali/holbertonschool-AirBnB_clone_v3")
 
 
 app = Flask(__name__)
+"""
+Cette commande définit une stratégie de contrôle d'accès
+à l'origine (CORS) pour l'application Flask. Cela signifie
+que les requêtes provenant de domaines différents seront
+autorisées à accéder aux ressources de l'API.
+"""
+CORS(app)
+cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 app.register_blueprint(app_views)
 
