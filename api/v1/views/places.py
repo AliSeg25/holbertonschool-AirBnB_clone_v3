@@ -51,7 +51,7 @@ def get_place(place_id):
                  strict_slashes=False)
 def delete_place(place_id):
     """
-    Deletes a Place Object
+    Suprimer une place avec un id
     """
 
     place = storage.get(Place, place_id)
